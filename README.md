@@ -49,6 +49,12 @@ flowchart LR
 
 ![硬件与软件职业路径对比：入行条件、经验积累和各自挑战](docs/images/hardware-vs-software-careers.png)
 
+## AI 时代的投入结构
+
+- [硬件、软件与 AI：投入发生在哪里](docs/硬件软件与AI时代的投入结构.md)：对比原型、规模部署和持续运营的成本，说明为什么硬件前置投入明显，以及 AI 服务怎样依赖算力、数据中心和能源。
+
+![硬件、软件和 AI 服务在不同阶段的投入结构对比](docs/images/investment-hardware-software-ai.png)
+
 ## 复盘
 
 - [实验过程与踩坑记录](docs/esp32-ws2812-lab-retrospective.md)
