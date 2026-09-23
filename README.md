@@ -43,6 +43,12 @@ flowchart LR
 
 ![流片难点：功能、版图、速度功耗面积需要在流片前验证，流片后发现错误会增加成本和时间](docs/images/why-tapeout-is-hard.png)
 
+## 行业与职业
+
+- [硬件与软件：入行门槛和经验积累](docs/硬件与软件职业路径对比.md)：用对照图解释实体验证、迭代速度与经验价值的差异，并说明“35 岁毕业”不是软件的技术规律。
+
+![硬件与软件职业路径对比：入行条件、经验积累和各自挑战](docs/images/hardware-vs-software-careers.png)
+
 ## 复盘
 
 - [实验过程与踩坑记录](docs/esp32-ws2812-lab-retrospective.md)
