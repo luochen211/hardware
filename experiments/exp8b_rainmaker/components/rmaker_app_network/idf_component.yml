@@ -1,0 +1,10 @@
+## IDF Component Manager Manifest File
+version: "1.4.5"
+description: Network connectivity helper for ESP RainMaker
+dependencies:
+  idf:
+    version: ">=5.1.0"
+  espressif/qrcode:
+    version: "*"
+  espressif/network_provisioning:
+    version: "~1.2.1"

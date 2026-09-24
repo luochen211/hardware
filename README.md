@@ -12,30 +12,22 @@
 
 例如，手机收到 ESP32 上报的土壤湿度值，只能说明设备发送了这个读数；要确认传感器供电和接线，还需要相应的诊断信息或实际测量。
 
-## 动手实验
-
-- [ESP32 WS2812 RGB 灯实验](experiments/esp32-ws2812-lab/README.md)：基于老师提供的 `exp1_blink` 工程，使用 ESP32 控制灯并通过串口观察运行状态。
-
 ## 八个实验的学习路线
 
-项目计划包含 8 个实验，从认识输入输出，到连接传感器、使用蓝牙，再完成综合作品。当前仓库已记录第 1 个 WS2812 灯实验；其余主题先作为学习路线规划，后续按实际实验内容补充。
+现在有 8 个阶段、13 个 ESP32 工程。第 3、4、5、6、8 阶段各有不同板卡或通信方案的分支，按需选择，不必全部烧录。另有一份[早期 WS2812 练习副本](experiments/esp32-ws2812-lab/README.md)，用于记录最初的灯光实验与踩坑过程。
 
-```mermaid
-flowchart LR
-  E1["1 · WS2812 彩灯<br/>GPIO 与串口"] --> E2["2 · 按键交互<br/>数字输入"]
-  E2 --> E3["3 · 模拟传感器<br/>ADC 采集"]
-  E3 --> E4["4 · 数字传感器<br/>I2C 读取"]
-  E4 --> E5["5 · 蓝牙通信<br/>手机与单片机"]
-  E5 --> E6["6 · 电机或舵机<br/>驱动与动作"]
-  E6 --> E7["7 · 传感器联动<br/>自动控制"]
-  E7 --> E8["8 · 综合作品<br/>系统集成"]
-  classDef complete fill:#dff3e8,stroke:#2b8061,color:#163b2e
-  classDef planned fill:#edf2ff,stroke:#6079b8,color:#22304d
-  class E1 complete
-  class E2,E3,E4,E5,E6,E7,E8 planned
-```
+| 阶段 | 工程 | 主要内容 |
+| --- | --- | --- |
+| 1 · 灯光输出 | [WS2812 彩灯](experiments/exp1_blink/README.md) | SPI 驱动 RGB 灯，练习状态输出 |
+| 2 · 按键与任务 | [GPIO + FreeRTOS](experiments/exp2_gpio_freertos/README.md) | 按键消抖、长短按、多任务协作 |
+| 3 · 感知环境 | [智能家居板](experiments/exp3a_home/README.md) / [智慧农业板](experiments/exp3b_farm/README.md) | DHT11 与烟雾，或土壤、光照与雨滴；OLED 显示 |
+| 4 · 控制执行器 | [智能家居板](experiments/exp4a_home/README.md) / [智慧农业板](experiments/exp4b_farm/README.md) | 蜂鸣器、步进电机、彩灯、继电器，或风扇开关与彩灯 |
+| 5 · 接入局域网 | [固定配置 Wi-Fi + TCP](experiments/exp5a_hardcode/README.md) / [SmartConfig + TCP](experiments/exp5b_smartconfig/README.md) | 比较写入配置与手机配网，向电脑发送示例 JSON |
+| 6 · 蓝牙 | [BLE GATT 控灯](experiments/exp6a_gatt/README.md) / [BLE 配网](experiments/exp6b_ble_prov/README.md) | 手机控制 WS2812，或通过蓝牙配置 Wi-Fi |
+| 7 · 消息通信 | [MQTT](experiments/exp7_mqtt/README.md) | 上报模拟温湿度数据，订阅灯光控制命令 |
+| 8 · 综合连接 | [MQTT 智慧农业演示](experiments/exp8a_mqtt/README.md) / [RainMaker 智能家居](experiments/exp8b_rainmaker/README.md) | 一个演示 MQTT 远程控制与模拟数据，另一个读取 DHT11、烟雾并接入 RainMaker |
 
-第 1 个已记录；第 2–8 个为规划主题。
+这些目录包含源码和操作说明，部分还留有本机构建产物；**工程存在或编译成功，不等于已经在实训箱上完成接线、烧录和逐项验收**。第 5、7、8A 阶段的温湿度数据为模拟值；第 8B 阶段会尝试读取真实 DHT11 和烟雾传感器，读数仍需实物核验。实验前请按所用板卡确认引脚、电源与外设型号。
 
 ## 芯片知识
 
@@ -59,4 +51,4 @@ flowchart LR
 
 - [实验过程与踩坑记录](docs/esp32-ws2812-lab-retrospective.md)
 
-当前 WS2812 示例没有读取土壤湿度传感器。智能农业湿度采集应作为后续实验，在确认传感器接线和 ADC 引脚后单独实现。
+早期 WS2812 练习副本只控制彩灯，没有读取土壤湿度。土壤、光照和雨滴 ADC 采集见[实验 3B](experiments/exp3b_farm/README.md)；相关读数是否准确，仍需结合接线、校准和实物测量确认。
