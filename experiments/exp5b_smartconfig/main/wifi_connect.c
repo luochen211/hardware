@@ -20,6 +20,7 @@
 #include "freertos/event_groups.h"
 #include "freertos/task.h"
 #include "esp_system.h"
+#include "esp_netif.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_log.h"
@@ -137,7 +138,8 @@ static void sc_event_handler(void *arg, esp_event_base_t event_base,
             wifi_config.sta.threshold.authmode = WIFI_AUTH_WPA2_PSK;
             wifi_config.sta.sae_pwe_h2e = WPA3_SAE_PWE_BOTH;
 
-            ESP_ERROR_CHECK(esp_wifi_disconnect());
+            /* 首次配网时尚未连接 AP，disconnect 可能返回错误，不能用 ESP_ERROR_CHECK 中止程序 */
+            esp_wifi_disconnect();
             ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
             esp_wifi_connect();
             break;
