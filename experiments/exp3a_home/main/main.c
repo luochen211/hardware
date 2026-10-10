@@ -5,7 +5,7 @@
  *
  * 引脚（实训箱源码HCS + 原理图验证）：
  *   DHT11温湿度:  GPIO5  （单总线）
- *   烟雾MQ-2:     GPIO34 （ADC1_CH6，输入专用引脚）
+ *   烟雾MQ-2:     GPIO35 （ADC1_CH7，输入专用引脚）
  *   OLED(I2C):    SCL=GPIO19, SDA=GPIO18, 地址0x3C
  *
  * 编译运行：
@@ -32,7 +32,7 @@ static const char *TAG = "EXP3A";
 /* --- DHT11 --- */
 #define DHT11_PIN          GPIO_NUM_5   /* 实训箱硬件确认 */
 
-/* --- 烟雾MQ-2 (GPIO34 = ADC1_CH6) --- */
+/* --- 烟雾MQ-2 (GPIO35 = ADC1_CH7) --- */
 #define SMOKE_ADC_CHANNEL  ADC_CHANNEL_7  /* GPIO35 */
 
 /* --- I2C OLED --- */
